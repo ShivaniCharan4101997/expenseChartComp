@@ -14,9 +14,10 @@
   --primaryTextColor: hsl(25, 47%, 15%);
   --secondaryTextColor: hsl(28, 10%, 53%);
   --bgColor: hsl(26, 66%, 93%);
-  --cardBorderRadius: 12px;
-  --barsBorderRadius: 6px;
-  --tooltipBorderRadius: 6px;
+
+  --cardBorderRadius: 0.75rem; /* 12px */
+  --barsBorderRadius: 0.375rem; /* 6px */
+  --tooltipBorderRadius: 0.375rem;
   --padding: 1.4rem;
 }
 /* base */
@@ -66,7 +67,7 @@ body {
   background-color: #fff;
   border-radius: var(--cardBorderRadius);
   padding: var(--padding);
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 .chart__card--heading {
   color: var(--primaryTextColor);
@@ -76,13 +77,13 @@ body {
 }
 
 /* bar chart */
-
 .bar__area {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   list-style: none;
-  height: 200px;
+
+  height: clamp(9rem, 30vw, 14rem);
 }
 
 .bar__item {
@@ -94,15 +95,8 @@ body {
   position: relative;
 }
 
-.skeleton {
-  width: clamp(28px, 8vw, 40px);
-  height: 100px;
-  background: #eee;
-  border-radius: var(--barsBorderRadius);
-}
 .bar {
-  height: 100px;
-  width: clamp(28px, 8vw, 40px);
+  width: clamp(1.75rem, 8vw, 2.5rem);
   background-color: var(--red);
   border-radius: var(--barsBorderRadius);
   cursor: pointer;
@@ -182,23 +176,17 @@ body {
   font-weight: 700;
 }
 
-/* attribution */
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
-/* responsive */
-@media (max-width: 768px) {
-  .balance__card {
-    /* align-items: flex-start; */
-    gap: 1rem;
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    animation: none;
+    transform: scaleY(1);
   }
 
-  .chart__card {
-    margin-top: 1.5rem;
+  .tooltip__amount {
+    transition: none;
+  }
+
+  .bar {
+    transition: none;
   }
 }
