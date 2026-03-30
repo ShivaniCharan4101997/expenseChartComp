@@ -1,0 +1,204 @@
+/* reset */
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* variables */
+:root {
+  --red: hsl(10, 79%, 65%);
+  --cyan: hsl(186, 34%, 65%);
+  --primaryTextColor: hsl(25, 47%, 15%);
+  --secondaryTextColor: hsl(28, 10%, 53%);
+  --bgColor: hsl(26, 66%, 93%);
+  --cardBorderRadius: 12px;
+  --barsBorderRadius: 6px;
+  --tooltipBorderRadius: 6px;
+  --padding: 1.4rem;
+}
+/* base */
+body {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  background-color: var(--bgColor);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+/* wrapper */
+.wrapper {
+  margin-inline: auto;
+  width: 90%;
+  max-width: 550px;
+}
+
+/* balance card */
+.balance__card {
+  background-color: var(--red);
+  border-radius: var(--cardBorderRadius);
+  padding: var(--padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.small__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.balance__card--heading {
+  color: #dedede;
+  font-size: 1rem;
+}
+.balance__card--amount {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* chart card */
+.chart__card {
+  background-color: #fff;
+  border-radius: var(--cardBorderRadius);
+  padding: var(--padding);
+  margin-top: 20px;
+}
+.chart__card--heading {
+  color: var(--primaryTextColor);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* bar chart */
+
+.bar__area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  list-style: none;
+  height: 200px;
+}
+
+.bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: var(--barsBorderRadius);
+  position: relative;
+}
+
+.skeleton {
+  width: clamp(28px, 8vw, 40px);
+  height: 100px;
+  background: #eee;
+  border-radius: var(--barsBorderRadius);
+}
+.bar {
+  height: 100px;
+  width: clamp(28px, 8vw, 40px);
+  background-color: var(--red);
+  border-radius: var(--barsBorderRadius);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: grow 0.6s ease forwards;
+}
+
+@keyframes grow {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.bar:hover {
+  opacity: 0.7;
+}
+.bar__item:hover .tooltip__amount,
+.bar__item:focus-within .tooltip__amount {
+  opacity: 1;
+  transform: translate(-50%, -12px) scale(1);
+}
+/* tooltip */
+.tooltip__amount {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -8px) scale(0.95);
+
+  background-color: var(--primaryTextColor);
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border-radius: var(--tooltipBorderRadius);
+  font-size: 0.875rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+.bar__item--current .bar {
+  background-color: var(--cyan);
+}
+
+/* divider */
+.divider {
+  height: 1px;
+  background-color: var(--secondaryTextColor);
+  opacity: 0.3;
+  margin: 1.5rem 0;
+}
+
+.bottom__summary--area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.total__amount--heading,
+.summary__amount--heading,
+.day__label {
+  color: var(--secondaryTextColor);
+  font-size: 0.9rem;
+}
+.total__amount {
+  color: var(--primaryTextColor);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.percentage__change {
+  color: var(--primaryTextColor);
+  font-size: 1rem;
+  text-align: right;
+  font-weight: 700;
+}
+
+/* attribution */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .balance__card {
+    /* align-items: flex-start; */
+    gap: 1rem;
+  }
+
+  .chart__card {
+    margin-top: 1.5rem;
+  }
+}

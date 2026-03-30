@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Expenses chart component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="wrapper">
+      <section class="balance__card">
+        <div class="small__label">
+          <p class="balance__card--heading">My balance</p>
+          <p class="balance__card--amount">$921.48</p>
+        </div>
+
+        <div class="logo">
+          <img src="./images/logo.svg" alt="logo" />
+        </div>
+      </section>
+      <section class="chart__card">
+        <h1 class="chart__card--heading">Spending - Last 7 days</h1>
+        <ul class="bar__area" role="list">
+          <li class="bar__item skeleton"></li>
+          <li class="bar__item skeleton"></li>
+          <li class="bar__item skeleton"></li>
+          <li class="bar__item skeleton"></li>
+          <li class="bar__item skeleton"></li>
+          <li class="bar__item skeleton"></li>
+          <li class="bar__item skeleton"></li>
+        </ul>
+        <div class="divider"></div>
+        <div class="bottom__summary--area">
+          <div class="left__side">
+            <p class="total__amount--heading">Total this month</p>
+            <p class="total__amount">$478.33</p>
+          </div>
+          <div class="right__side">
+            <p class="percentage__change">+2.4%</p>
+            <p class="summary__amount--heading">from last month</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Shivani Charan</a>.
+    </div> -->
+  </body>
+</html>
